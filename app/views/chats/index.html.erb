@@ -1,0 +1,33 @@
+<div class='index-main'>
+  <div class='post-contents'>
+<% @chats.each do |chat| %>
+   <div class='post-content'>
+        <%# コメントに関する表示 %>
+        <div class='comment'>
+          <div class='comment__num'>
+            0
+          </div>
+          <div class='comment__unit'>
+            comments
+          </div>
+        </div>
+
+ <div class='chat'>
+  <div class='chat-top'>
+    <div class='chat-top__title'>
+      <%= link_to chat.title, chat_path(chat.id) %>
+       </div>
+       <div class='chat-top__name'>
+        <%= chat.name %>
+        </div>
+          </div>
+          <div class='chat-bottom'>
+            <div class='chat-bottom__content'>
+              <%= chat.content %>
+              </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

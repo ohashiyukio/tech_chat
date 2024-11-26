@@ -1,14 +1,51 @@
-questionタイトル：<%= @chat.title %><br>
-質問内容：<%= @chat.content %><br>
-投稿者名：<%= @chat.name %>
+<div class="show-main">
+  <div class="show-contents">
+    <%# 質問内容の表示 %>
+    <div class="show-chat">
+      <div class="show-chat__title">
+        <%= @chat.title %>
+      </div>
+      <div class="show-chat__content">
+        <%= @chat.content %>
+      </div>
+      <div class="show-chat__name">
+        <%= @chat.name %>
+      </div>
+    </div>
 
-<%= form_with(model: [@chat, @question], local: true) do |form| %><br>
-  <%= form.text_area :content, placeholder: "回答する" %><br>
-  <%= form.text_field :name, placeholder: "投稿者名" %><br>
-  <%= form.submit "POST" %><br>
-<% end %>
+    <%# 回答投稿フォームの表示 %>
+    <div class="show-question-form">
+      <%= form_with(model: [@chat, @question], local: true) do |form| %>
+        <div class="show-question-form__heading">
+          回答する
+        </div>
+        <div class="show-question-form__content">
+          <%= form.text_area :content, placeholder: "回答する", rows: "4" %>
+        </div>
+        <div class="show-question-form__name">
+          <%= form.text_field :name, placeholder: "投稿者名" %>
+        </div>
+        <div class="show-question-form__submit">
+          <%= form.submit "POST" %>
+        </div>
+        <% end %>    
+      </div>
 
-<% @questions.each do |question| %>
-  回答：<%= question.content %><br>
-  投稿者名：<%= question.name %><br><br>
-<% end %>
+      <%# 回答一覧の表示 %>
+      <div class="show-questions">
+        <div class="questions-heading">
+          いままでの回答：
+        </div>
+        <% @questions.each do |question| %>
+          <div class="question-content">
+            <div class="question-content__text">
+              <%= question.content %>
+            </div>
+            <div class="question-content__name">
+              <%= question.name %>
+            </div>
+          </div>
+        <% end %>
+      </div>  
+  </div>
+</div>

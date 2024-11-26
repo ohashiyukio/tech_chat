@@ -15,7 +15,7 @@ class ChatsController < ApplicationController
 
   def create
     Chat.create(chat_params)
-    redirect_to questions_path
+    redirect_to chats_path
   end
 
   private
